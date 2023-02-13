@@ -1,0 +1,6 @@
+[submodule "Android-sqlite-ext-native-driver"]
+	path = Android-sqlite-ext-native-driver
+	url = git@github.com:brodybits/Android-sqlite-ext-native-driver.git
+[submodule "Android-sqlite-connector"]
+	path = Android-sqlite-connector
+	url = git@github.com:liteglue/Android-sqlite-connector.git

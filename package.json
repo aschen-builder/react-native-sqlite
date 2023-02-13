@@ -1,17 +1,22 @@
 {
-  "name": "react-native-sqlite-storage",
-  "version": "6.0.1",
+  "name": "react-native-sqlite",
+  "version": "1.0.0",
   "description": "SQLite3 bindings for React Native (Android & iOS)",
   "main": "sqlite.js",
   "scripts": {
-    "test": "echo \"Error: no test specified yet\" && exit 1"
+    "sqlite:build:init": "git submodule update --init",
+    "sqlite:build:connector": "cd Android-sqlite-connector && make && cd ..",
+    "sqlite:build:driver": "cd Android-sqlite-ext-native-driver && make init && make && cd ..",
+    "sqlite:util:copy-driver": "unzip -o Android-sqlite-ext-native-driver/sqlite-native-driver-libs.zip -d platforms/android-native",
+    "sqlite:util:copy-connector": "cp Android-sqlite-connector/sqlite-connector.jar platforms/android-native/libs",
+    "sqlite:build": "yarn sqlite:build:init && yarn sqlite:build:connector && yarn sqlite:build:driver && yarn sqlite:util:copy-driver && yarn sqlite:util:copy-connector"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/andpor/react-native-sqlite-storage.git"
+    "url": "https://github.com/aschen-builder/react-native-sqlite.git"
   },
   "keywords": [
-    "react-native-sqlite-storage",
+    "react-native-sqlite",
     "react-native-sqlite",
     "react-component",
     "reactnative",
@@ -23,12 +28,12 @@
     "promise",
     "cordova-sqlite-storage"
   ],
-  "author": "Andrzej Porebski",
+  "author": "aschen-builder",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andpor/react-native-sqlite-storage/issues"
+    "url": "https://github.com/aschen-builder/react-native-sqlite/issues"
   },
-  "homepage": "https://github.com/andpor/react-native-sqlite-storage",
+  "homepage": "https://github.com/aschen-builder/react-native-sqlite",
   "peerDependencies": {
     "react-native": ">=0.14.0"
   },
