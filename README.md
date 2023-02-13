@@ -1,4 +1,4 @@
-# react-native-sqlite-storage
+# react-native-sqlite
 SQLite3 Native Plugin for React Native for both Android (Classic and Native), iOS and Windows
 
 Foundation of this library is based on Chris Brody's Cordova SQLite plugin.
@@ -21,9 +21,9 @@ Version 3.2 is the first version compatible with RN 0.40.
 
 # Installation
 ```
-  npm install --save react-native-sqlite-storage
+  npm install --save react-native-sqlite
 ```
-Then follow the instructions for your platform to link react-native-sqlite-storage into your project
+Then follow the instructions for your platform to link react-native-sqlite into your project
 
 ## Promises
 To enable promises, run 
@@ -45,7 +45,7 @@ Run `cd ios && pod install && cd ..`. Linking is not required in React Native 0.
 Add this to your Podfile which should be located inside the ios project subdirectory
 ```ruby
 pod 'React', :path => '../node_modules/react-native'
-pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
+pod 'react-native-sqlite', :path => '../node_modules/react-native-sqlite'
 ```
 Or use the sample Podfile included in the package by copying it over to ios subdirectory and replacing AwesomeProject inside of it with the name of your RN project.
 
@@ -80,17 +80,17 @@ After linking project should like this:
 
 ##### Drag the SQLite Xcode project as a dependency project into your React Native XCode project
 
-![alt tag](https://raw.github.com/andpor/react-native-sqlite-storage/master/instructions/libs.png)
+![alt tag](https://raw.github.com/aschen-builder/react-native-sqlite/master/instructions/libs.png)
 
 ##### XCode SQLite libraries dependency set up
 
 Add libSQLite.a (from Workspace location) to the required Libraries and Frameworks. Also add sqlite3.0.tbd (XCode 7) or libsqlite3.0.dylib (XCode 6 and earlier) in the same fashion using Required Libraries view (Do not just add them manually as the build paths will not be properly set)
 
-![alt tag](https://raw.github.com/andpor/react-native-sqlite-storage/master/instructions/addlibs.png)
+![alt tag](https://raw.github.com/aschen-builder/react-native-sqlite/master/instructions/addlibs.png)
 
 #### Step 2. Application JavaScript require
 
-Add var SQLite = require('react-native-sqlite-storage') to your index.ios.js
+Add var SQLite = require('react-native-sqlite') to your index.ios.js
 
 ![alt tag](instructions/require.png)
 
@@ -146,11 +146,11 @@ module.exports = {
   ...,
   dependencies: {
     ...,
-    "react-native-sqlite-storage": {
+    "react-native-sqlite": {
       platforms: {
         android: {
           sourceDir:
-            "../node_modules/react-native-sqlite-storage/platforms/android-native",
+            "../node_modules/react-native-sqlite/platforms/android-native",
           packageImportPath: "import io.liteglue.SQLitePluginPackage;",
           packageInstance: "new SQLitePluginPackage()"
         }
@@ -170,9 +170,9 @@ module.exports = {
 // file: android/settings.gradle
 ...
 
-include ':react-native-sqlite-storage'
-project(':react-native-sqlite-storage').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sqlite-storage/platforms/android') // react-native-sqlite-storage >= 4.0.0
-// IMPORTANT: if you are working with a version less than 4.0.0 the project directory is '../node_modules/react-native-sqlite-storage/src/android'
+include ':react-native-sqlite'
+project(':react-native-sqlite').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sqlite/platforms/android') // react-native-sqlite >= 4.0.0
+// IMPORTANT: if you are working with a version less than 4.0.0 the project directory is '../node_modules/react-native-sqlite/src/android'
 ```
 
 #### Step 2 - Update app module Gradle Build script (located under Gradle Settings in Project Panel)
@@ -183,7 +183,7 @@ project(':react-native-sqlite-storage').projectDir = new File(rootProject.projec
 
 dependencies {
     ...
-    implementation project(':react-native-sqlite-storage')
+    implementation project(':react-native-sqlite')
 }
 ```
 
@@ -245,7 +245,7 @@ public class MainApplication extends Application implements ReactApplication {
 // file: index.android.js
 
 var React = require('react-native');
-var SQLite = require('react-native-sqlite-storage')
+var SQLite = require('react-native-sqlite')
 ...
 ```
 
@@ -261,7 +261,7 @@ Add the `SQLitePlugin` project to your solution.
 
 1. Open the solution in Visual Studio 2019
 2. Right-click Solution icon in Solution Explorer > Add > Existing Project
-3. Select `node_modules\react-native-sqlite-storage\platforms\windows\SQLitePlugin\SQLitePlugin.vcxproj`
+3. Select `node_modules\react-native-sqlite\platforms\windows\SQLitePlugin\SQLitePlugin.vcxproj`
 
 ### Step 2: Update the .vcxproj file
 
@@ -296,19 +296,19 @@ Copy/paste your pre-populated database file into the 'www' folder. Give it the s
 
 in XCode, right click on the main folder and select Add Files to 'your project name'
 
-![alt tag](https://raw.github.com/andpor/react-native-sqlite-storage/master/instructions/addFilesToProject.png)
+![alt tag](https://raw.github.com/aschen-builder/react-native-sqlite/master/instructions/addFilesToProject.png)
 
 #### Step 4 - Choose files to add
 
 In the Add Files dialog, navigate to the 'www' directory you created in Step 1, select it, make sure you check the option to Create Folder Reference
 
-![alt tag](https://raw.github.com/andpor/react-native-sqlite-storage/master/instructions/addFilesToProjectSelect.png)
+![alt tag](https://raw.github.com/aschen-builder/react-native-sqlite/master/instructions/addFilesToProjectSelect.png)
 
 #### Step 5 - Verify project structure
 
 Ensure your project structure after previous steps are executed looks like this
 
-![alt tag](https://raw.github.com/andpor/react-native-sqlite-storage/master/instructions/projectStructureAfter.png)
+![alt tag](https://raw.github.com/aschen-builder/react-native-sqlite/master/instructions/projectStructureAfter.png)
 
 ### Step 6 - Adjust openDatabase call
 
